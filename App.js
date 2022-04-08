@@ -1,10 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { Button } from 'react-native';
+import Content from './Content';
 
 export default function App() {
+  let [mouted, setMounted] = useState(false);
+
+  function handleClick() {
+    setMounted(!mouted);
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Button
+        title="Toggle"
+        onPress={handleClick}
+      ></Button>
+      {mouted && <Content/>}
       <StatusBar style="auto" />
     </View>
   );
